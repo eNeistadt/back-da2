@@ -18,25 +18,12 @@ connection.connect((err) => {
   console.log('Conectado a la base de datos.');
 });
 
-// Crear la tabla con la sentencia SQL
-const crearTabla = `
-CREATE TABLE IF NOT EXISTS usuarios (
-  id INT AUTO_INCREMENT PRIMARY KEY,
-  nombre VARCHAR(100) NOT NULL,
-  usuario VARCHAR(50) NOT NULL UNIQUE,
-  password VARCHAR(255) NOT NULL,
-  rol ENUM('legales', 'empleado', 'CEO', 'propietario', 'inquilino', 'mudanzas') NOT NULL,
-  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
-`;
-
-connection.query(crearTabla, (err, results) => {
-  if (err) {
-    console.error('Error al crear la tabla:', err.stack);
-    return;
-  }
-  console.log('Tabla creada exitosamente.');
-});
-
+connection.query('SELECT * FROM usuarios', (err, results, fields) => {
+    if (err) {
+      console.error('Error al hacer SELECT:', err.stack);
+      return;
+    }
+    console.table(results);  // Muestra los resultados en formato tabla
+  });
 // Cerrar la conexión
 connection.end();
