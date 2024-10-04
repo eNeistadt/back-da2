@@ -1,5 +1,5 @@
 import jwt from "jsonwebtoken";
-const JWT_SECRET = `arqdeapps`;
+const JWT_SECRET = `da2`;
 
 export function verifyToken(req, res, next) {
   const token = req.headers["authorization"];

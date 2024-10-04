@@ -8,6 +8,7 @@ export const authRouter = express.Router();
 
 const JWT_SECRET = `da2`
 
+
 authRouter.post("/login", (req, res) => {
     const { email, password } = req.body;
     console.log(email);
@@ -32,9 +33,14 @@ authRouter.post("/login", (req, res) => {
         return res.status(400).json({ msg: "Contraseña incorrecta" });
       }
   
+      const token = jwt.sign(
+        { id: user.id, rol: user.rol, username: user.nombre },
+        JWT_SECRET,
+        { expiresIn: '1h' }
+    );
+    res.status(200).json({ token, rol: user.rol, username: user.nombre });
+
       // Si la contraseña es correcta, devolver el rol del usuario
-      const { rol } = user;
-      res.status(200).json({ msg: "Login exitoso", rol });
     });
   });
   
