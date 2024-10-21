@@ -6,7 +6,7 @@ export const connection = mysql.createConnection({
       conectar si no estás corriendo el back desde el EC2.)
       Lo mismo con el front, por eso los endpoints apuntan al localhost:4000, que sería este back.
        */
-      host: "database-1.c7rxooynh95g.us-east-1.rds.amazonaws.com",
+      host: "database-2.c7rxooynh95g.us-east-1.rds.amazonaws.com",
       port: "3306",
       user: "admin",
       password: "password",
