@@ -28,7 +28,5 @@ connection.query(selectAllQuery, (err, results) => {
     } else {
       console.log('Data from usuarios table:', results);
     }
-    // Cerrar la conexión después de completar todas las consultas
-       
 })
   
