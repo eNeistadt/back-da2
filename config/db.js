@@ -27,6 +27,6 @@ connection.query(selectAllQuery, (err, results) => {
       console.error('Error selecting data:', err);
     } else {
       console.log('Data from usuarios table:', results);
-    }
-})
+    } 
+})   
   
